@@ -1,8 +1,14 @@
- class AppState {
-  final double perimeter;
+// app_state.dart
+class AppState {
+  final int result;
 
-  AppState ({required this.perimeter});
+  AppState({required this.result});
 
-  AppState.initialState() : perimeter = 0.0;
- }
+  AppState.initial() : result = 0;
 
+  AppState copyWith({int? result}) {
+    return AppState(
+      result: result ?? this.result,
+    );
+  }
+}

@@ -1,20 +1,11 @@
-import 'actions.dart';
+// reducer.dart
+import 'package:redux/redux.dart';
 import 'state.dart';
-
-
-
+import 'actions.dart';
 
 AppState appReducer(AppState state, dynamic action) {
-  if (action is CalculateSquarePerimeter) {
-    final perimeter = 4 * action.sisi;
-    return AppState(perimeter: perimeter);
-  } else if (action is CalculateRectanglePerimeter) {
-    final perimeter = 2 * (action.panjang + action.Lebar);
-    return AppState(perimeter: perimeter);
-  } else if (action is CalculateTrianglePerimeter) {
-    final perimeter = action.sisi1 + action.sisi2 + action.sisi3;
-    return AppState(perimeter: perimeter);
+  if (action is UpdateResultAction) {
+    return state.copyWith(result: action.result);
   }
   return state;
 }
-
