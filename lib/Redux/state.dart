@@ -19,13 +19,9 @@ class StateAritmatik {
 
   StateAritmatik({required this.result});
 
-  StateAritmatik.initial() : result = 0;
+  StateAritmatik.initialState() : result = 0;
 
-  StateAritmatik copyWith({int? result}) {
-    return StateAritmatik(
-      result: result ?? this.result,
-    );
-  }
+  static initial() {}
 }
 
 class StateBangunRuang {
@@ -34,4 +30,13 @@ class StateBangunRuang {
   StateBangunRuang({required this.value});
 
   StateBangunRuang.initialState() : value = 0.0;
+}
+
+class StatePerpangkatan {
+  final int value;
+
+  StatePerpangkatan({required this.value});
+
+  StatePerpangkatan.initialState() : value = 0;
+  static initial() {}
 }

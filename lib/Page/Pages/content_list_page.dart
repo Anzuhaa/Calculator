@@ -21,34 +21,43 @@ class _ContentListPageState extends State<ContentListPage> {
     super.initState();
     contentData = [
       ModelContent("Bangun Datar", () {
-        GoRouter.of(context).go('/PersegiPage');
+        GoRouter.of(context).push('/BangunDatarPage');
       }),
       ModelContent("Bangun Ruang", () {
-        GoRouter.of(context).go('/PersegiPanjangPage');
+        GoRouter.of(context).push('/BangunRuangPage');
+      }),
+      ModelContent("Perpangkatan", () {
+        GoRouter.of(context).push('/PerpangkatanPage');
       }),
       ModelContent("Aritmatika", () {
-        GoRouter.of(context).go('/AritmatikPage');
+        GoRouter.of(context).push('/AritmatikPage');
       }),
-      ModelContent("Perpangkatan", () {}),
     ];
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xff1c1d22),
       appBar: AppBar(
-        title: MyText(
-          text: "List Calculator",
-          fontsize: 16,
-          fontfamily: 'MontserratBold',
-          color: Color(0xfff3f3f3),
+        backgroundColor: Color(0xff1c1d22),
+        title: Center(
+          child: MyText(
+            text: "List Calculator",
+            fontsize: 24,
+            fontfamily: 'MontserratBold',
+            color: Color(0xfff3f3f3),
+          ),
         ),
       ),
-      body: ListView.builder(
-        itemCount: contentData.length,
-        itemBuilder: (context, index) {
-          return AdapterList(modelContent: contentData[index]);
-        },
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: ListView.builder(
+          itemCount: contentData.length,
+          itemBuilder: (context, index) {
+            return AdapterList(modelContent: contentData[index]);
+          },
+        ),
       ),
     );
   }

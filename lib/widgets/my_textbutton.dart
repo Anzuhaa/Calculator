@@ -16,7 +16,7 @@ class MyTextbutton extends StatelessWidget {
     required this.onPressed,
     required this.backgroundColor,
     required this.textColor,
-    this.height = 140,
+    this.height = 60,
     this.borderRadius = 4.0,
   }) : super(key: key);
 

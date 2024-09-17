@@ -16,10 +16,15 @@ final storeBangunDatar = Store<StateBangunDatar>(
 
 final storeAritmatika = Store<StateAritmatik>(
   aritmatikReducer,
-  initialState: StateAritmatik.initial(),
+  initialState: StateAritmatik.initialState(),
 );
 
 final storeBangunRuang = Store<StateBangunRuang>(
   shapeReducer,
   initialState: StateBangunRuang.initialState(),
+);
+
+final storePerpangkatan = Store<StatePerpangkatan>(
+  perpangkatanReducer,
+  initialState: StatePerpangkatan.initialState(),
 );

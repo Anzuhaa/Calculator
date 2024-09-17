@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:calculator_redux/Redux/state.dart';
+import 'package:flutter/material.dart';
 
 import 'actions.dart';
 
@@ -10,7 +13,8 @@ AppState appReducer(AppState state, dynamic action) {
 }
 
 //BangunDatar
-StateBangunDatar bangunDatarReducer(StateBangunDatar state, dynamic action) {
+StateBangunDatar bangunDatarReducer(
+    StateBangunDatar stateBgnDatar, dynamic action) {
   if (action is CalculateSquareValue) {
     final result = 4 * action.side;
     return StateBangunDatar(value: result);
@@ -21,19 +25,20 @@ StateBangunDatar bangunDatarReducer(StateBangunDatar state, dynamic action) {
     final result = action.side1 + action.side2 + action.side3;
     return StateBangunDatar(value: result);
   }
-  return state;
+  return stateBgnDatar;
 }
 
 //Aritmatik
-StateAritmatik aritmatikReducer(StateAritmatik state, dynamic action) {
+StateAritmatik aritmatikReducer(
+    StateAritmatik stateAritmatika, dynamic action) {
   if (action is UpdateResultAction) {
-    return StateAritmatik(result: action.result);
+    return StateAritmatik(result: action.value);
   }
-  return state;
+  return stateAritmatika;
 }
 
 //Bangun Ruang
-StateBangunRuang shapeReducer(StateBangunRuang state, dynamic action) {
+StateBangunRuang shapeReducer(StateBangunRuang stateBgnRuang, dynamic action) {
   if (action is CalculateBoxValue) {
     final result = 4 * (action.panjang + action.lebar + action.tinggi);
     return StateBangunRuang(value: result);
@@ -45,5 +50,13 @@ StateBangunRuang shapeReducer(StateBangunRuang state, dynamic action) {
     return StateBangunRuang(value: result);
   }
 
-  return state;
+  return stateBgnRuang;
+}
+
+StatePerpangkatan perpangkatanReducer(
+    StatePerpangkatan statePerpangkatan, dynamic action) {
+  if (action is ResultPerpangkatan) {
+    return StatePerpangkatan(value: action.result);
+  }
+  return statePerpangkatan;
 }

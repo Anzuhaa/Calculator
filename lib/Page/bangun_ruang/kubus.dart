@@ -9,14 +9,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import '../../Redux/state.dart';
 
-class MyPersegiPage extends StatefulWidget {
-  const MyPersegiPage({super.key});
+class MyKubusPage extends StatefulWidget {
+  const MyKubusPage({super.key});
 
   @override
-  State<MyPersegiPage> createState() => _MyPersegiPageState();
+  State<MyKubusPage> createState() => _MyKubusPageState();
 }
 
-class _MyPersegiPageState extends State<MyPersegiPage> {
+class _MyKubusPageState extends State<MyKubusPage> {
   final TextEditingController _Value = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -29,18 +29,18 @@ class _MyPersegiPageState extends State<MyPersegiPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              MyTextfield(text: "", label: "Sisi Persegi", controller: _Value),
+              MyTextfield(text: "", label: "Sisi", controller: _Value),
               MyTextbutton(
                 text: "Hitung",
                 onPressed: () {
                   final side = double.tryParse(_Value.text) ?? 0.0;
-                  StoreProvider.of<StateBangunDatar>(context)
-                      .dispatch(CalculateSquareValue(side));
+                  StoreProvider.of<StateBangunRuang>(context)
+                      .dispatch(CalculateCubeValue(side));
                 },
                 backgroundColor: Color(0xFF5865f2),
                 textColor: Color(0xFFf3f3f3),
               ),
-              StoreConnector<StateBangunDatar, double>(
+              StoreConnector<StateBangunRuang, double>(
                 converter: (store) => store.state.value,
                 builder: (context, value) => MyText(
                   text: "Hasil $value",
