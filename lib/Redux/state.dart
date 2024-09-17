@@ -1,4 +1,3 @@
-
 class AppState {
   final String currentRoute;
 
@@ -20,7 +19,13 @@ class StateAritmatik {
 
   StateAritmatik({required this.result});
 
-  StateAritmatik.initialState() : result = 0;
+  StateAritmatik.initial() : result = 0;
+
+  StateAritmatik copyWith({int? result}) {
+    return StateAritmatik(
+      result: result ?? this.result,
+    );
+  }
 }
 
 class StateBangunRuang {

@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, unused_import, unused_label, no_leading_underscores_for_local_identifiers
 
+import 'package:calculator_redux/Page/aritmatika/aritmatika.dart';
 import 'package:calculator_redux/Page/bangun_datar/persegi.dart';
 import 'package:calculator_redux/Page/bangun_datar/persegipanjang.dart';
 import 'package:calculator_redux/Page/bangun_datar/segitiga.dart';
@@ -16,7 +17,8 @@ void main() {
   runApp(MyApp());
 }
 
-  final store = createStore();
+final store = createStore();
+
 class MyApp extends StatelessWidget {
   final GoRouter _router = GoRouter(
     initialLocation: '/',
@@ -36,6 +38,10 @@ class MyApp extends StatelessWidget {
       GoRoute(
         path: '/SegitigaPage',
         builder: (context, state) => MySegitigaPage(),
+      ),
+      GoRoute(
+        path: '/AritmatikPage',
+        builder: (context, state) => MyAritmatikPage(),
       ),
     ],
   );

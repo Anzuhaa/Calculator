@@ -6,7 +6,6 @@ import 'package:calculator_redux/widgets/my_text.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-
 class ContentListPage extends StatefulWidget {
   const ContentListPage({super.key});
 
@@ -22,13 +21,13 @@ class _ContentListPageState extends State<ContentListPage> {
     super.initState();
     contentData = [
       ModelContent("Bangun Datar", () {
-        context.go('/PersegiPage');
+        GoRouter.of(context).go('/PersegiPage');
       }),
       ModelContent("Bangun Ruang", () {
         GoRouter.of(context).go('/PersegiPanjangPage');
       }),
       ModelContent("Aritmatika", () {
-        GoRouter.of(context).go('/SegitigaPage');
+        GoRouter.of(context).go('/AritmatikPage');
       }),
       ModelContent("Perpangkatan", () {}),
     ];

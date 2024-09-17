@@ -8,6 +8,7 @@ Store<AppState> createStore() {
     initialState: AppState(currentRoute: '/'),
   );
 }
+
 final storeBangunDatar = Store<StateBangunDatar>(
   bangunDatarReducer,
   initialState: StateBangunDatar.initialState(),
@@ -15,7 +16,7 @@ final storeBangunDatar = Store<StateBangunDatar>(
 
 final storeAritmatika = Store<StateAritmatik>(
   aritmatikReducer,
-  initialState: StateAritmatik.initialState(),
+  initialState: StateAritmatik.initial(),
 );
 
 final storeBangunRuang = Store<StateBangunRuang>(

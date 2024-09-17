@@ -1,5 +1,5 @@
+import 'package:calculator_redux/Page/aritmatika/aritmatika.dart';
 import 'package:go_router/go_router.dart';
-
 import '../Page/bangun_datar/persegi.dart';
 import '../Page/bangun_datar/persegipanjang.dart';
 import '../Page/bangun_datar/segitiga.dart';
@@ -19,6 +19,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/PersegiPanjangPage',
       builder: (context, state) => MyPersegiPanjangPage(),
+    ),
+    GoRoute(
+      path: '/AritmatikPage',
+      builder: (context, state) => MyAritmatikPage(),
     ),
     GoRoute(
       path: '/SegitigaPage',
