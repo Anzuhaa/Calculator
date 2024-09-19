@@ -26,11 +26,14 @@ class _MyAritmatikPageState extends State<MyAritmatikPage> {
       store: storeAritmatika,
       child: Scaffold(
         appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: Color(0xFFF3F3F3),
+          ),
           title: MyText(
-            text: 'text',
-            fontsize: 20,
-            fontfamily: 'Montserrat',
-            color: Color(0xfff3f3f3),
+            text: 'Aritmatika',
+            fontsize: 24,
+            fontfamily: 'MontserratBold',
+            color: Color(0xFFF3F3F3),
           ),
           backgroundColor: Color(0xff1c1d22),
         ),
@@ -62,9 +65,13 @@ class _MyAritmatikPageState extends State<MyAritmatikPage> {
                     _operation = newValue!;
                   });
                 },
+                style: TextStyle(
+                  color: Color(0xfff3f3f3),
+                ),
+                dropdownColor: Color(0xff1c1d22),
               ),
               MyTextbutton(
-                text: 'Calculate',
+                text: 'Hitung Aritmatika',
                 onPressed: () {
                   final num1 = int.parse(_inputController1.text);
                   final num2 = int.parse(_inputController2.text);
@@ -91,7 +98,7 @@ class _MyAritmatikPageState extends State<MyAritmatikPage> {
                   StoreProvider.of<StateAritmatik>(context)
                       .dispatch(UpdateResultAction(result));
                 },
-                backgroundColor: Color(0xff2f2f2f),
+                backgroundColor: Color(0xFF5865f2),
                 textColor: Color(0xfff3f3f3),
               ),
               StoreConnector<StateAritmatik, int>(

@@ -2,6 +2,7 @@
 
 import 'package:calculator_redux/Redux/actions.dart';
 import 'package:calculator_redux/Redux/store.dart';
+import 'package:calculator_redux/widgets/my_text.dart';
 import 'package:calculator_redux/widgets/my_textbutton.dart';
 import 'package:calculator_redux/widgets/my_textfield.dart';
 import 'package:flutter/material.dart';
@@ -20,9 +21,21 @@ class _MyTabungPageState extends State<MyTabungPage> {
   final TextEditingController _Value2 = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return StoreProvider<StateBangunDatar>(
-      store: storeBangunDatar,
+    return StoreProvider<StateBangunRuang>(
+      store: storeBangunRuang,
       child: Scaffold(
+        appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: Color(0xFFF3F3F3),
+          ),
+          title: MyText(
+            text: 'Tabung',
+            fontsize: 24,
+            fontfamily: 'MontserratBold',
+            color: Color(0xFFF3F3F3),
+          ),
+          backgroundColor: Color(0xff1c1d22),
+        ),
         backgroundColor: Color(0xff1c1d22),
         body: Padding(
           padding: EdgeInsets.all(16.0),
@@ -32,7 +45,7 @@ class _MyTabungPageState extends State<MyTabungPage> {
               MyTextfield(text: "", label: "Jari-Jari", controller: _Value1),
               MyTextfield(text: "", label: "Tinggi", controller: _Value2),
               MyTextbutton(
-                text: "Hitung",
+                text: "Hitung Keliling",
                 onPressed: () {
                   final jarijari = double.tryParse(_Value1.text) ?? 0.0;
                   final tinggi = double.tryParse(_Value2.text) ?? 0.0;
@@ -44,8 +57,12 @@ class _MyTabungPageState extends State<MyTabungPage> {
               ),
               StoreConnector<StateBangunDatar, double>(
                 converter: (store) => store.state.value,
-                builder: (context, result) => Text('Hasil: $result',
-                    style: const TextStyle(fontSize: 20)),
+                builder: (context, result) => MyText(
+                  text: "Hasil $result",
+                  fontsize: 20,
+                  fontfamily: 'MontserratSemi',
+                  color: Color(0xfff3f3f3),
+                ),
               ),
             ],
           ),

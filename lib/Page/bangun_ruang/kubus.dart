@@ -20,9 +20,21 @@ class _MyKubusPageState extends State<MyKubusPage> {
   final TextEditingController _Value = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return StoreProvider<StateBangunDatar>(
-      store: storeBangunDatar,
+    return StoreProvider<StateBangunRuang>(
+      store: storeBangunRuang,
       child: Scaffold(
+        appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: Color(0xFFF3F3F3),
+          ),
+          title: MyText(
+            text: 'Kubus',
+            fontsize: 24,
+            fontfamily: 'MontserratBold',
+            color: Color(0xFFF3F3F3),
+          ),
+          backgroundColor: Color(0xff1c1d22),
+        ),
         backgroundColor: Color(0xff1c1d22),
         body: Padding(
           padding: EdgeInsets.all(16.0),
@@ -31,7 +43,7 @@ class _MyKubusPageState extends State<MyKubusPage> {
             children: [
               MyTextfield(text: "", label: "Sisi", controller: _Value),
               MyTextbutton(
-                text: "Hitung",
+                text: "Hitung Keliling",
                 onPressed: () {
                   final side = double.tryParse(_Value.text) ?? 0.0;
                   StoreProvider.of<StateBangunRuang>(context)

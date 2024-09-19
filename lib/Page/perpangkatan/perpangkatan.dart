@@ -31,16 +31,20 @@ class _MyPerpangkatanPageState extends State<MyPerpangkatanPage> {
   final TextEditingController _inputController2 = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return StoreProvider(
+    return StoreProvider<StatePerpangkatan>(
         store: storePerpangkatan,
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: Color(0xff1c1d22),
+            iconTheme: IconThemeData(
+              color: Color(0xFFF3F3F3),
+            ),
             title: MyText(
-                text: 'Perpangkatan',
-                fontsize: 20,
-                fontfamily: 'Montserrat',
-                color: Color(0xfff3f3f3)),
+              text: 'Perpangkatan',
+              fontsize: 24,
+              fontfamily: 'MontserratBold',
+              color: Color(0xFFF3F3F3),
+            ),
+            backgroundColor: Color(0xff1c1d22),
           ),
           backgroundColor: Color(0xff1c1d22),
           body: Padding(
@@ -57,7 +61,7 @@ class _MyPerpangkatanPageState extends State<MyPerpangkatanPage> {
                     label: 'Masukan Pangkat',
                     controller: _inputController2),
                 MyTextbutton(
-                  text: "Calculate",
+                  text: "Hitung Perpangkatan",
                   onPressed: () {
                     final num1 = int.parse(_inputController1.text);
                     final num2 = int.parse(_inputController2.text);
@@ -65,7 +69,7 @@ class _MyPerpangkatanPageState extends State<MyPerpangkatanPage> {
                     StoreProvider.of<StatePerpangkatan>(context)
                         .dispatch(ResultPerpangkatan(result));
                   },
-                  backgroundColor: Color(0xff2f2f2f),
+                  backgroundColor: Color(0xFF5865f2),
                   textColor: Color(0xfff3f3f3),
                 ),
                 StoreConnector<StatePerpangkatan, int>(

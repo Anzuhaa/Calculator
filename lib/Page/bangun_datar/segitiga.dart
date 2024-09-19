@@ -25,6 +25,18 @@ class _MySegitigaPageState extends State<MySegitigaPage> {
     return StoreProvider<StateBangunDatar>(
       store: storeBangunDatar,
       child: Scaffold(
+        appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: Color(0xFFF3F3F3),
+          ),
+          title: MyText(
+            text: 'Segitiga',
+            fontsize: 24,
+            fontfamily: 'MontserratBold',
+            color: Color(0xFFF3F3F3),
+          ),
+          backgroundColor: Color(0xff1c1d22),
+        ),
         backgroundColor: Color(0xff1c1d22),
         body: Padding(
           padding: EdgeInsets.all(16.0),
@@ -35,7 +47,7 @@ class _MySegitigaPageState extends State<MySegitigaPage> {
               MyTextfield(text: "", label: "Sisi 2", controller: _Value2),
               MyTextfield(text: "", label: "Sisi 3", controller: _Value3),
               MyTextbutton(
-                text: "Hitung",
+                text: "Hitung Keliling",
                 onPressed: () {
                   final sisi1 = double.tryParse(_Value1.text) ?? 0.0;
                   final sisi2 = double.tryParse(_Value2.text) ?? 0.0;

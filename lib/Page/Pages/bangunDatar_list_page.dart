@@ -22,13 +22,13 @@ class _BangunDatarListPageState extends State<BangunDatarListPage> {
   void initState() {
     super.initState();
     BangunDatarData = [
-      ModelContent("Persegi Page", () {
+      ModelContent("Persegi", () {
         GoRouter.of(context).push('/PersegiPage');
       }),
-      ModelContent("Persegi Panjang Page", () {
+      ModelContent("Persegi Panjang", () {
         GoRouter.of(context).push('/PersegiPanjangPage');
       }),
-      ModelContent("Segitiga Page", () {
+      ModelContent("Segitiga", () {
         GoRouter.of(context).push('/SegitigaPage');
       }),
     ];
@@ -39,15 +39,16 @@ class _BangunDatarListPageState extends State<BangunDatarListPage> {
     return Scaffold(
       backgroundColor: Color(0xff1c1d22),
       appBar: AppBar(
-        backgroundColor: Color(0xff1c1d22),
-        title: Center(
-          child: MyText(
-            text: "List Bangun Datar",
-            fontsize: 24,
-            fontfamily: 'MontserratBold',
-            color: Color(0xfff3f3f3),
-          ),
+        iconTheme: IconThemeData(
+          color: Color(0xFFF3F3F3),
         ),
+        title: MyText(
+          text: 'List Bangun Datar',
+          fontsize: 24,
+          fontfamily: 'MontserratBold',
+          color: Color(0xFFF3F3F3),
+        ),
+        backgroundColor: Color(0xff1c1d22),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),

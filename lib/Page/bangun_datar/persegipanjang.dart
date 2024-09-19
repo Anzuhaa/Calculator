@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:calculator_redux/Redux/actions.dart';
 import 'package:calculator_redux/Redux/store.dart';
 import 'package:calculator_redux/widgets/my_text.dart';
@@ -23,6 +25,18 @@ class _MyPersegiPanjangPageState extends State<MyPersegiPanjangPage> {
     return StoreProvider<StateBangunDatar>(
       store: storeBangunDatar,
       child: Scaffold(
+        appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: Color(0xFFF3F3F3),
+          ),
+          title: MyText(
+            text: 'Persegi Panjang',
+            fontsize: 24,
+            fontfamily: 'MontserratBold',
+            color: Color(0xFFF3F3F3),
+          ),
+          backgroundColor: Color(0xff1c1d22),
+        ),
         backgroundColor: Color(0xff1c1d22),
         body: Padding(
           padding: EdgeInsets.all(16.0),
@@ -32,7 +46,7 @@ class _MyPersegiPanjangPageState extends State<MyPersegiPanjangPage> {
               MyTextfield(text: "", label: "Panjang", controller: _Value1),
               MyTextfield(text: "", label: "Lebar", controller: _Value2),
               MyTextbutton(
-                text: "Hitung",
+                text: "Hitung Keliling",
                 onPressed: () {
                   final length = double.tryParse(_Value1.text) ?? 0.0;
                   final width = double.tryParse(_Value2.text) ?? 0.0;

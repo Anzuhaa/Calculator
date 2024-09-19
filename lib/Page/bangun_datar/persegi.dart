@@ -23,6 +23,18 @@ class _MyPersegiPageState extends State<MyPersegiPage> {
     return StoreProvider<StateBangunDatar>(
       store: storeBangunDatar,
       child: Scaffold(
+        appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: Color(0xFFF3F3F3),
+          ),
+          title: MyText(
+            text: 'Persegi',
+            fontsize: 24,
+            fontfamily: 'MontserratBold',
+            color: Color(0xFFF3F3F3),
+          ),
+          backgroundColor: Color(0xff1c1d22),
+        ),
         backgroundColor: Color(0xff1c1d22),
         body: Padding(
           padding: EdgeInsets.all(16.0),
@@ -31,7 +43,7 @@ class _MyPersegiPageState extends State<MyPersegiPage> {
             children: [
               MyTextfield(text: "", label: "Sisi Persegi", controller: _Value),
               MyTextbutton(
-                text: "Hitung",
+                text: "Hitung Keliling",
                 onPressed: () {
                   final side = double.tryParse(_Value.text) ?? 0.0;
                   StoreProvider.of<StateBangunDatar>(context)

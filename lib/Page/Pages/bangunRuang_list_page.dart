@@ -21,13 +21,13 @@ class _BangunRuangListPageState extends State<BangunRuangListPage> {
     super.initState();
     BangunDatarData = [
       ModelContent("Kubus", () {
-        GoRouter.of(context).push('/PersegiPage');
+        GoRouter.of(context).push('/KubusPage');
       }),
-      ModelContent("Balok Page", () {
-        GoRouter.of(context).push('/PersegiPanjangPage');
+      ModelContent("Balok", () {
+        GoRouter.of(context).push('/BalokPage');
       }),
-      ModelContent("Tabung Page", () {
-        GoRouter.of(context).push('/SegitigaPage');
+      ModelContent("Tabung", () {
+        GoRouter.of(context).push('/TabungPage');
       }),
     ];
   }
@@ -37,15 +37,16 @@ class _BangunRuangListPageState extends State<BangunRuangListPage> {
     return Scaffold(
       backgroundColor: Color(0xff1c1d22),
       appBar: AppBar(
-        backgroundColor: Color(0xff1c1d22),
-        title: Center(
-          child: MyText(
-            text: "List Bangun Ruang",
-            fontsize: 24,
-            fontfamily: 'MontserratBold',
-            color: Color(0xfff3f3f3),
-          ),
+        iconTheme: IconThemeData(
+          color: Color(0xFFF3F3F3),
         ),
+        title: MyText(
+          text: 'List Bangun Ruang',
+          fontsize: 24,
+          fontfamily: 'MontserratBold',
+          color: Color(0xFFF3F3F3),
+        ),
+        backgroundColor: Color(0xff1c1d22),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
