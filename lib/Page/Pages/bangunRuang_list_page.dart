@@ -14,12 +14,12 @@ class BangunRuangListPage extends StatefulWidget {
 }
 
 class _BangunRuangListPageState extends State<BangunRuangListPage> {
-  List<ModelContent> BangunDatarData = [];
+  List<ModelContent> BangunRuangData = [];
 
   @override
   void initState() {
     super.initState();
-    BangunDatarData = [
+    BangunRuangData = [
       ModelContent("Kubus", () {
         GoRouter.of(context).push('/KubusPage');
       }),
@@ -51,9 +51,9 @@ class _BangunRuangListPageState extends State<BangunRuangListPage> {
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: ListView.builder(
-          itemCount: BangunDatarData.length,
+          itemCount: BangunRuangData.length,
           itemBuilder: (context, index) {
-            return AdapterList(modelContent: BangunDatarData[index]);
+            return AdapterList(modelContent: BangunRuangData[index]);
           },
         ),
       ),

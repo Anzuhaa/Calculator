@@ -2,6 +2,7 @@
 
 import 'package:calculator_redux/Redux/actions.dart';
 import 'package:calculator_redux/Redux/store.dart';
+import 'package:calculator_redux/main.dart';
 import 'package:calculator_redux/widgets/my_text.dart';
 import 'package:calculator_redux/widgets/my_textbutton.dart';
 import 'package:calculator_redux/widgets/my_textfield.dart';
@@ -18,10 +19,18 @@ class MyPersegiPage extends StatefulWidget {
 
 class _MyPersegiPageState extends State<MyPersegiPage> {
   final TextEditingController _Value = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    StoreProvider.of<AppState>(context, listen: false)
+        .dispatch(CalculateSquareValue(0));
+  }
+
   @override
   Widget build(BuildContext context) {
-    return StoreProvider<StateBangunDatar>(
-      store: storeBangunDatar,
+    return StoreProvider<AppState>(
+      store: store,
       child: Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
@@ -46,13 +55,13 @@ class _MyPersegiPageState extends State<MyPersegiPage> {
                 text: "Hitung Keliling",
                 onPressed: () {
                   final side = double.tryParse(_Value.text) ?? 0.0;
-                  StoreProvider.of<StateBangunDatar>(context)
+                  StoreProvider.of<AppState>(context)
                       .dispatch(CalculateSquareValue(side));
                 },
                 backgroundColor: Color(0xFF5865f2),
                 textColor: Color(0xFFf3f3f3),
               ),
-              StoreConnector<StateBangunDatar, double>(
+              StoreConnector<AppState, double>(
                 converter: (store) => store.state.value,
                 builder: (context, value) => MyText(
                   text: "Hasil $value",

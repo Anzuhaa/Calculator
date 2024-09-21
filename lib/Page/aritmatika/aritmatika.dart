@@ -2,13 +2,12 @@
 
 import 'package:calculator_redux/Redux/actions.dart';
 import 'package:calculator_redux/Redux/state.dart';
-import 'package:calculator_redux/Redux/store.dart';
+import 'package:calculator_redux/main.dart';
 import 'package:calculator_redux/widgets/my_text.dart';
 import 'package:calculator_redux/widgets/my_textbutton.dart';
 import 'package:calculator_redux/widgets/my_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:redux/redux.dart';
 
 class MyAritmatikPage extends StatefulWidget {
   @override
@@ -18,12 +17,19 @@ class MyAritmatikPage extends StatefulWidget {
 class _MyAritmatikPageState extends State<MyAritmatikPage> {
   final TextEditingController _inputController1 = TextEditingController();
   final TextEditingController _inputController2 = TextEditingController();
-  String _operation = '+';
+  String operation = '+';
+
+  @override
+  void initState() {
+    super.initState();
+    StoreProvider.of<AppState>(context, listen: false)
+        .dispatch(CalculateAritmatik(0));
+  }
 
   @override
   Widget build(BuildContext context) {
-    return StoreProvider<StateAritmatik>(
-      store: storeAritmatika,
+    return StoreProvider<AppState>(
+      store: store,
       child: Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
@@ -52,7 +58,7 @@ class _MyAritmatikPageState extends State<MyAritmatikPage> {
                   label: 'Masukan Angka',
                   controller: _inputController2),
               DropdownButton<String>(
-                value: _operation,
+                value: operation,
                 items: <String>['+', '-', '*', '/', '%']
                     .map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
@@ -62,7 +68,7 @@ class _MyAritmatikPageState extends State<MyAritmatikPage> {
                 }).toList(),
                 onChanged: (String? newValue) {
                   setState(() {
-                    _operation = newValue!;
+                    operation = newValue!;
                   });
                 },
                 style: TextStyle(
@@ -73,38 +79,38 @@ class _MyAritmatikPageState extends State<MyAritmatikPage> {
               MyTextbutton(
                 text: 'Hitung Aritmatika',
                 onPressed: () {
-                  final num1 = int.parse(_inputController1.text);
-                  final num2 = int.parse(_inputController2.text);
-                  int result;
-                  switch (_operation) {
+                  final num1 = double.parse(_inputController1.text);
+                  final num2 = double.parse(_inputController2.text);
+                  double value;
+                  switch (operation) {
                     case '+':
-                      result = num1 + num2;
+                      value = num1 + num2;
                       break;
                     case '-':
-                      result = num1 - num2;
+                      value = num1 - num2;
                       break;
                     case '*':
-                      result = num1 * num2;
+                      value = num1 * num2;
                       break;
                     case '/':
-                      result = num1 ~/ num2;
+                      value = num1 / num2;
                       break;
                     case '%':
-                      result = num1 % num2;
+                      value = num1 % num2;
                       break;
                     default:
-                      result = 0;
+                      value = 0;
                   }
-                  StoreProvider.of<StateAritmatik>(context)
-                      .dispatch(UpdateResultAction(result));
+                  StoreProvider.of<AppState>(context)
+                      .dispatch(CalculateAritmatik(value));
                 },
                 backgroundColor: Color(0xFF5865f2),
                 textColor: Color(0xfff3f3f3),
               ),
-              StoreConnector<StateAritmatik, int>(
-                converter: (store) => storeAritmatika.state.result,
-                builder: (context, result) => MyText(
-                  text: 'Hasil: $result',
+              StoreConnector<AppState, double>(
+                converter: (store) => store.state.value,
+                builder: (context, value) => MyText(
+                  text: 'Hasil: $value',
                   fontsize: 16,
                   fontfamily: 'MontserratSemi',
                   color: Color(0xfff3f3f3),
@@ -116,11 +122,4 @@ class _MyAritmatikPageState extends State<MyAritmatikPage> {
       ),
     );
   }
-}
-
-class _ViewModel {
-  final Store<StateAritmatik> store;
-  StateAritmatik get state => store.state;
-
-  _ViewModel({required this.store});
 }

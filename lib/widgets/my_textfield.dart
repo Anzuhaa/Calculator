@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class MyTextfield extends StatelessWidget {
   final String text;
@@ -25,27 +26,30 @@ class MyTextfield extends StatelessWidget {
           fontFamily: 'MontserratSemi',
           color: Colors.white,
         ),
+        keyboardType: TextInputType.number,
+        inputFormatters: <TextInputFormatter>[
+          FilteringTextInputFormatter.digitsOnly,
+        ],
         decoration: InputDecoration(
-          filled: true,
-          fillColor: Color(0xFF32323c),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(4.0),
-            borderSide: BorderSide(
-              color: Color(0xFF1b1b23),
+            filled: true,
+            fillColor: Color(0xFF32323c),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(4.0),
+              borderSide: BorderSide(
+                color: Color(0xFF1b1b23),
+              ),
             ),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(4.0),
-            borderSide: BorderSide(
-              color: Color(0xFF1b1b23),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(4.0),
+              borderSide: BorderSide(
+                color: Color(0xFF1b1b23),
+              ),
             ),
-          ),
-          labelText: label,
-          labelStyle: TextStyle(
-            fontSize: 16,
-            color: Color(0xFFf3f3f3),
-          )
-        ),
+            labelText: label,
+            labelStyle: TextStyle(
+              fontSize: 16,
+              color: Color(0xFFf3f3f3),
+            )),
         controller: controller,
       ),
     );

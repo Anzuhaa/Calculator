@@ -2,6 +2,7 @@
 
 import 'package:calculator_redux/Redux/actions.dart';
 import 'package:calculator_redux/Redux/store.dart';
+import 'package:calculator_redux/main.dart';
 import 'package:calculator_redux/widgets/my_text.dart';
 import 'package:calculator_redux/widgets/my_textbutton.dart';
 import 'package:calculator_redux/widgets/my_textfield.dart';
@@ -20,10 +21,18 @@ class _MyBalokPageState extends State<MyBalokPage> {
   final TextEditingController _Value1 = TextEditingController();
   final TextEditingController _Value2 = TextEditingController();
   final TextEditingController _Value3 = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    StoreProvider.of<AppState>(context, listen: false)
+        .dispatch(CalculateCubeValue(0));
+  }
+
   @override
   Widget build(BuildContext context) {
-    return StoreProvider<StateBangunRuang>(
-      store: storeBangunRuang,
+    return StoreProvider<AppState>(
+      store: store,
       child: Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
@@ -52,13 +61,13 @@ class _MyBalokPageState extends State<MyBalokPage> {
                   final panjang = double.tryParse(_Value1.text) ?? 0.0;
                   final lebar = double.tryParse(_Value2.text) ?? 0.0;
                   final tinggi = double.tryParse(_Value3.text) ?? 0.0;
-                  StoreProvider.of<StateBangunRuang>(context)
+                  StoreProvider.of<AppState>(context)
                       .dispatch(CalculateBoxValue(panjang, lebar, tinggi));
                 },
                 backgroundColor: Color(0xFF5865f2),
                 textColor: Color(0xFFf3f3f3),
               ),
-              StoreConnector<StateBangunRuang, double>(
+              StoreConnector<AppState, double>(
                 converter: (store) => store.state.value,
                 builder: (context, result) => MyText(
                   text: "Hasil $result",

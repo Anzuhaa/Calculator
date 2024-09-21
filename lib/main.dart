@@ -78,8 +78,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StoreProvider<StateBangunDatar>(
-      store: storeBangunDatar,
+    return StoreProvider<AppState>(
+      store: store,
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
         routerConfig: _router,

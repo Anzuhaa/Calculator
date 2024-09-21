@@ -24,12 +24,10 @@ class CalculateTriangleValue {
 }
 
 //Aritmatika
-class UpdateResultAction {
-  final int value;
+class CalculateAritmatik {
+  final double value;
 
-  UpdateResultAction(this.value);
-
-  get result => null;
+  CalculateAritmatik(this.value);
 }
 
 //Bangun Ruang
@@ -56,14 +54,13 @@ class CalculateTubeValue {
 
 //Perpangkatan
 class CalculatePerpangkatan {
-  final double value1;
-  final double value2;
+  final double value;
 
-  CalculatePerpangkatan(this.value1, this.value2);
+  CalculatePerpangkatan(this.value);
 }
 
-class ResultPerpangkatan {
-  final int result;
+class resetCalculateValue {
+  final double value;
 
-  ResultPerpangkatan(this.result);
+  resetCalculateValue(this.value);
 }
